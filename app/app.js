@@ -1,3 +1,1 @@
-angular.module('todo', [
-    'todo.controller'
-]);
+angular.module('todo', []);

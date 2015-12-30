@@ -6,10 +6,11 @@
   <link rel="stylesheet" href="./style/main.css">
 </head>
 <body>
-  <div ng-controller="TodoController">
+  <div ng-controller="TodoController"
+       ng-cloak>
     <h1>TODO</h1>
     <input type="text" ng-model="newTask"/>
-    <button ng-click="add()">KNOPKA</button>
+    <button ng-click="add(newTask)">KNOPKA</button>
 
     <div ng-repeat="todo in todos">
       <input type="button" value="+/-"
@@ -26,7 +27,9 @@
 
   <!--Module-->
   <script src="app.js"></script>
-  <script src="todo/todo.module.js"></script>
+
+  <!--Service-->
+  <script src="todo/todo.service.js"></script>
 
   <!--Controller-->
   <script src="todo/todo.controller.js"></script>
