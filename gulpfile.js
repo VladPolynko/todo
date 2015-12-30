@@ -26,8 +26,8 @@ gulp.task('html', function () {
       .pipe(reload({stream: true}));
 });
 
-gulp.task('json', function () {
-  gulp.src('app/**/*.json')
+gulp.task('css', function () {
+  gulp.src('app/**/*.css')
       .pipe(gulp.dest('./build/'))
       .pipe(reload({stream: true}));
 });
@@ -35,7 +35,6 @@ gulp.task('json', function () {
 gulp.task('watch', function () {
   gulp.watch('app/**/*.js', ['script']);
   gulp.watch('app/**/*.html', ['html']);
-  gulp.watch('app/**/*.html', ['json']);
 });
 
-gulp.task('server', ['json', 'html', 'script', 'browserSync', 'watch']);
+gulp.task('server', ['html', 'script', 'css', 'browserSync', 'watch']);

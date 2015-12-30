@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="todo">
 <head>
-    <meta charset="UTF-8">
-
-    <title></title>
-    <link rel="stylesheet" href="style/main.css">
+  <meta charset="UTF-8">
+  <title>TODO</title>
+  <link rel="stylesheet" href="./style/main.css">
 </head>
 <body>
-<div ng-controller="TodoController">
+  <div ng-controller="TodoController">
     <h1>TODO</h1>
-    <input type="text" ng-model="newTask">
+    <input type="text" ng-model="newTask"/>
     <button ng-click="add()">KNOPKA</button>
-        <div ng-repeat="todo in todos">
-            <input type="button" ng-click="reStatus(todo)" value="+/-">
-            <span ng-class="{deleted: todo.status == true}">{{todo.todo_value}}</span>
-            <input type="button" value="del" ng-click="del(todo)">
-        </div>
-    <div>
 
+    <div ng-repeat="todo in todos">
+      <input type="button" value="+/-"
+             ng-click="reStatus(todo)"/>
+      <span ng-class="{deleted: todo.status == true}">
+        {{ todo.todo_value }}
+      </span>
+      <input type="button" value="del"
+             ng-click="del(todo)"/>
     </div>
+  </div>
 
-</div>
-<script src="node_modules/angular/angular.min.js"></script>
-<script src="app.js"></script>
-<script src="todo/todo.controller.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+
+  <!--Module-->
+  <script src="app.js"></script>
+  <script src="todo/todo.module.js"></script>
+
+  <!--Controller-->
+  <script src="todo/todo.controller.js"></script>
+
 </body>
 </html>
