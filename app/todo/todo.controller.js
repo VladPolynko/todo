@@ -1,36 +1,30 @@
 angular
-    .module('todo.controller')
+    .module('todo')
     .controller('TodoController', TodoController);
 
-TodoController.$inject = ['$scope', '$http'];
+TodoController.$inject = [
+  '$scope',
+  'TodoUtils'
+];
 
-function TodoController ($scope,$http){
-    $scope.todos = [];
+function TodoController($scope,
+                        TodoUtils) {
 
-            $http.get('data/data.json').success(function(data){
-                $scope.todos = data;
+  $scope.todos = TodoUtils.getTodo();
 
-                for(var i=0; i > data.length; i++){
-                    $scope.todos.push(data[i].todo_value);
-                    $scope.todos.push(data[i].status);
-                }
-        });
+  $scope.add = function (taskText) {
+    TodoUtils.addTodo({
+      todo_value: taskText
+    });
 
-    $scope.add = function(){
-        $scope.todos.push({
-            todo_value: $scope.newTask,
-            status: false
-        });
-        $scope.newTask = '';
-        console.log($scope.todos);
-        $scope.del = function(todo){
-            var index = $scope.todos.indexOf(todo);
-            console.log(index);
-            $scope.todos.splice(index, 1);
-        };
-        $scope.reStatus = function(todo) {
-            todo.status = !todo.status;
-            console.log(todo.status);
-        };
-    };
+    $scope.newTask = '';
+  };
+
+  $scope.del = function (todo) {
+    TodoUtils.deleteTodo(todo);
+  };
+
+  $scope.reStatus = function (todo) {
+    TodoUtils.reStatusTodo(todo);
+  };
 }
