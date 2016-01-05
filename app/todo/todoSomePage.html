@@ -1,0 +1,13 @@
+<h1>TODO</h1>
+<input type="text" ng-model="newTask"/>
+<button ng-click="add(newTask)">KNOPKA</button>
+
+<div ng-repeat="todo in todos">
+    <input type="button" value="+/-"
+           ng-click="reStatus(todo)"/>
+      <span ng-class="{deleted: todo.status == true}">
+        {{ todo.todo_value }}
+      </span>
+    <input type="button" value="del"
+           ng-click="del(todo)"/>
+</div>

@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="todo">
 <head>
-  <meta charset="UTF-8">
-  <title>TODO</title>
-  <link rel="stylesheet" href="./style/main.css">
+    <meta charset="UTF-8">
+    <title>TODO</title>
+    <link rel="stylesheet" href="./style/main.css">
 </head>
 <body>
-  <div ng-controller="TodoController"
-       ng-cloak>
-    <h1>TODO</h1>
-    <input type="text" ng-model="newTask"/>
-    <button ng-click="add(newTask)">KNOPKA</button>
+<div>
+    <div ng-controller="TodoController"
+         ng-cloak>
 
-    <div ng-repeat="todo in todos">
-      <input type="button" value="+/-"
-             ng-click="reStatus(todo)"/>
-      <span ng-class="{deleted: todo.status == true}">
-        {{ todo.todo_value }}
-      </span>
-      <input type="button" value="del"
-             ng-click="del(todo)"/>
+        <todo-load></todo-load>
+
     </div>
-  </div>
+</div>
+<script src="node_modules/angular/angular.min.js"></script>
 
-  <script src="node_modules/angular/angular.min.js"></script>
+<!--Module-->
+<script src="app.js"></script>
 
-  <!--Module-->
-  <script src="app.js"></script>
+<!--Service-->
+<script src="todo/todo.service.js"></script>
 
-  <!--Service-->
-  <script src="todo/todo.service.js"></script>
+<!-- Directive-->
+<script src="todo/todo.directive.js"></script>
 
-  <!--Controller-->
-  <script src="todo/todo.controller.js"></script>
+<!--Controller-->
+<script src="todo/todo.controller.js"></script>
 
 </body>
 </html>
