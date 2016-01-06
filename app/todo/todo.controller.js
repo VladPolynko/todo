@@ -3,28 +3,26 @@ angular
     .controller('TodoController', TodoController);
 
 TodoController.$inject = [
-  '$scope',
-  'TodoUtils'
+    'TodoUtils'
 ];
 
-function TodoController($scope,
-                        TodoUtils) {
+function TodoController(TodoUtils) {
+    var vm = this;
+    vm.todos = TodoUtils.getTodo();
 
-  $scope.todos = TodoUtils.getTodo();
+    vm.add = function (taskText) {
+        TodoUtils.addTodo({
+            todo_value: taskText
+        });
 
-  $scope.add = function (taskText) {
-    TodoUtils.addTodo({
-      todo_value: taskText
-    });
+        vm.newTask = '';
+    };
 
-    $scope.newTask = '';
-  };
+    vm.del = function (todo) {
+        TodoUtils.deleteTodo(todo);
+    };
 
-  $scope.del = function (todo) {
-    TodoUtils.deleteTodo(todo);
-  };
-
-  $scope.reStatus = function (todo) {
-    TodoUtils.reStatusTodo(todo);
-  };
+    vm.reStatus = function (todo) {
+        TodoUtils.reStatusTodo(todo);
+    };
 }

@@ -5,39 +5,37 @@ angular
 TodoUtils.$inject = [];
 
 function TodoUtils() {
-  var todoList = [
-    {
-      todo_value: 'First',
-      status: false
+    var todoList = [
+        {
+            todo_value: 'First',
+            status: false
+        }
+    ];
+
+    var service = {
+        getTodo: getTodo,
+        addTodo: addTodo,
+        deleteTodo: deleteTodo,
+        reStatusTodo: reStatusTodo
+    };
+
+    function getTodo() {
+        return todoList;
     }
-  ];
 
-  var service = {
-    getTodo: getTodo,
-    addTodo: addTodo,
-    deleteTodo: deleteTodo,
-    reStatusTodo: reStatusTodo
-  };
+    function addTodo(task) {
+        task.status = false;
+        todoList.push(task);
+    }
 
-  function getTodo() {
-    return todoList;
-  }
+    function deleteTodo(task) {
+        var index = todoList.indexOf(task);
+        todoList.splice(index, 1);
+    }
 
-  function addTodo(task) {
-    task.status = false;
+    function reStatusTodo(task) {
+        task.status = !task.status;
+    }
 
-    todoList.push(task);
-  }
-
-  function deleteTodo(task) {
-    var index = todoList.indexOf(task);
-
-    todoList.splice(index, 1);
-  }
-
-  function reStatusTodo (task) {
-    task.status = !task.status;
-  }
-
-  return service;
+    return service;
 }
