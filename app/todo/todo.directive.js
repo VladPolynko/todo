@@ -6,7 +6,8 @@ todoLoad.$inject = [];
 
 function todoLoad() {
     return {
-        restrict: 'E',
+        controller: 'TodoController',
+        controllerAs: 'todos',
         templateUrl: 'todo/todoSomePage.html'
     };
 }
