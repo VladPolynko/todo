@@ -1,1 +1,3 @@
-angular.module('todo', []);
+angular.module('todo', [
+    'ngRoute'
+]);
