@@ -10,10 +10,10 @@ function config($routeProvider) {
         templateUrl: 'home/home.html'
       })
       .when('/todo', {
-        template: '<todo-load></todo-load>'
+        template: '<todo-list></todo-list>'
       })
-      .when('/todo/:TodoId', {
-        templateUrl: 'chapter.html'
+      .when('/todo/:todoId', {
+        template: '<todo-info></todo-info>'
       })
       .otherwise({
         redirectTo: '/'
