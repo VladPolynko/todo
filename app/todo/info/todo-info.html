@@ -1,0 +1,15 @@
+<div>
+  <div ng-if="!TodoCtrl.existObject()">
+    <h1>{{ TodoCtrl.todoInfo.title }}</h1>
+
+    <div>STATUS: {{ TodoCtrl.todoInfo.status }}</div>
+    <div>Description: {{ TodoCtrl.todoInfo.description }}</div>
+    <div>create : {{ TodoCtrl.todoInfo.dateCreate }}</div>
+    <div ng-if="TodoCtrl.todoInfo.dateDone">
+      done : {{ TodoCtrl.todoInfo.dateDone }}
+    </div>
+  </div>
+  <div ng-if="TodoCtrl.existObject()">
+    <h1>ERROR</h1>
+  </div>
+</div>

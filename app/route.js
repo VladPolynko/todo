@@ -1,20 +1,21 @@
 angular
     .module('todo')
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                template: '<todo-load></todo-load>'
-                //templateUrl: 'main/main.html'
-            })
-            .when('/todo', {
-                template: '<todo-load></todo-load>'
-            })
-            .when('/todo/:TodoId', {
-                templateUrl: 'chapter.html'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
+    .config(config);
 
+config.$inject = ['$routeProvider'];
 
-    });
+function config($routeProvider) {
+  $routeProvider
+      .when('/', {
+        templateUrl: 'home/home.html'
+      })
+      .when('/todo', {
+        template: '<todo-list></todo-list>'
+      })
+      .when('/todo/:todoId', {
+        template: '<todo-info></todo-info>'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+}
