@@ -1,5 +1,5 @@
 angular
-    .module('todo')
+    .module('todo',['$routeProvider'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
