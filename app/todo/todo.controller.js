@@ -3,26 +3,43 @@ angular
     .controller('TodoController', TodoController);
 
 TodoController.$inject = [
-    'TodoUtils'
+  '$location', '$routeParams',
+  'TodoUtils'
 ];
 
-function TodoController(TodoUtils) {
-    var vm = this;
-    vm.todos = TodoUtils.getTodo();
+function TodoController($location, $routeParams,
+                        TodoUtils) {
+  var vm = this;
+  vm.todos = TodoUtils.getTodo();
 
-    vm.add = function (taskText) {
-        TodoUtils.addTodo({
-            todo_value: taskText
-        });
+  if ($routeParams.todoId) {
+    vm.todoInfo = TodoUtils.getTodoById($routeParams.todoId);
+  }
 
-        vm.newTask = '';
-    };
+  vm.existObject = function () {
+    return Object.keys(vm.todoInfo).length === 0;
+  };
 
-    vm.del = function (todo) {
-        TodoUtils.deleteTodo(todo);
-    };
+  vm.add = function (taskText) {
+    if(taskText.length >= 2){
+      TodoUtils.addTodo({
+        title: taskText
+      });
 
-    vm.reStatus = function (todo) {
-        TodoUtils.reStatusTodo(todo);
-    };
+      vm.newTask = '';
+    }
+  };
+
+  vm.del = function (todo) {
+    TodoUtils.deleteTodo(todo);
+  };
+
+  vm.reStatus = function (todo) {
+    TodoUtils.reStatusTodo(todo);
+  };
+
+  vm.showTask = function (task) {
+    var path = 'todo/' + task.id;
+    $location.path(path);
+  };
 }

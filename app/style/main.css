@@ -1,3 +1,28 @@
+input{
+  border-radius: 4px;
+}
+
 .deleted {
   text-decoration: line-through;
 }
+
+.wrapper_todo {
+  text-align: center;
+  width: 250px;
+  border: 1px solid #d3d3d3;
+}
+
+.todo_title {
+  margin-top:0;
+  background: #428BCA;
+  color: white;
+}
+
+.wrapper_list {
+  text-align: left;
+  margin: 10px 5px;
+}
+.wrapper_list div {
+  border-bottom:1px solid #d3d3d3;
+}
+

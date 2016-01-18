@@ -35,6 +35,7 @@ gulp.task('css', function () {
 gulp.task('watch', function () {
   gulp.watch('app/**/*.js', ['script']);
   gulp.watch('app/**/*.html', ['html']);
+  gulp.watch('app/**/*.css', ['css']);
 });
 
 gulp.task('server', ['html', 'script', 'css', 'browserSync', 'watch']);

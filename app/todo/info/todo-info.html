@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row wrapper_todo">
+    <div ng-if="!TodoCtrl.existObject()">
+      <h1 class="todo_title">{{ TodoCtrl.todoInfo.title }}</h1>
+
+      <div class="wrapper_list">
+        <div class="">STATUS: {{ TodoCtrl.todoInfo.status }}</div>
+        <div>Description: {{ TodoCtrl.todoInfo.description }}</div>
+        <div>create : {{ TodoCtrl.todoInfo.dateCreate | date:"dd.MM.yyyy" }}</div>
+        <div ng-if="TodoCtrl.todoInfo.dateDone">
+          done : {{ TodoCtrl.todoInfo.dateDone | date:"dd.MM.yyyy"}}
+        </div>
+      </div>
+      <a href="#/todo" class="btn btn-sm btn-primary">Back <span class="glyphicon glyphicon-arrow-left"></span></a>
+    </div>
+    <div ng-if="TodoCtrl.existObject()">
+      <h1>ERROR</h1>
+    </div>
+  </div>
+</div>
