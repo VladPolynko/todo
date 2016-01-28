@@ -21,13 +21,14 @@ function TodoController($location, $routeParams,
   };
 
   vm.add = function (taskText) {
-    TodoUtils.addTodo({
-      title: taskText
-    });
+    if(taskText.length >= 2){
+      TodoUtils.addTodo({
+        title: taskText
+      });
 
-    vm.newTask = '';
+      vm.newTask = '';
+    }
   };
-
   vm.del = function (todo) {
     TodoUtils.deleteTodo(todo);
   };

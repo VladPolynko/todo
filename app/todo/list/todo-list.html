@@ -1,14 +1,28 @@
-<h1>TODO</h1>
-<input type="text" ng-model="TodoCtrl.newTask"/>
-<button ng-click="TodoCtrl.add(TodoCtrl.newTask)">KNOPKA</button>
-
-<div ng-repeat="todo in TodoCtrl.todos">
-  <input type="button" value="+/-"
-         ng-click="TodoCtrl.reStatus(todo)"/>
-  <input type="button" value="del"
-         ng-click="TodoCtrl.del(todo)"/>
+<div class="container">
+  <div class="row">
+    <div class="wrapper_todo">
+      <h1 class="todo_title">TODO</h1>
+      <input type="text" value="task"
+             ng-model="TodoCtrl.newTask"/>
+      <a class="btn btn-xs btn-primary"
+         ng-click="TodoCtrl.add(TodoCtrl.newTask)">submit
+        <span class=" glyphicon glyphicon-ok"></span>
+      </a>
+      <div class="wrapper_list"
+           ng-repeat="todo in TodoCtrl.todos | filter:TodoCtrl.newTask">
+        <a class="btn btn-xs btn-primary"
+           ng-click="TodoCtrl.reStatus(todo)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a class="btn btn-xs btn-primary"
+           ng-click="TodoCtrl.del(todo)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
         <span ng-class="{deleted: todo.status === true}"
               ng-click="TodoCtrl.showTask(todo)">
           {{ todo.title }}
         </span>
+      </div>
+    </div>
+  </div>
 </div>
