@@ -29,7 +29,6 @@ function TodoController($location, $routeParams,
       vm.newTask = '';
     }
   };
-
   vm.del = function (todo) {
     TodoUtils.deleteTodo(todo);
   };
